@@ -1,0 +1,18 @@
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+input {
+  width: 80%;
+  font-size: 2rem;
+  font-family: "Calibri", sans-serif;
+  border-radius: 15px 0 0 15px;
+  padding-left: 0.5rem;
+}
+
+button {
+  font-size: 2rem;
+  border-radius: 0 15px 15px 0;
+}
