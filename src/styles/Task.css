@@ -1,0 +1,17 @@
+ul {
+  padding: 0;
+  user-select: none;
+}
+
+ul li {
+  padding: 1rem 0.5rem;
+  list-style: none;
+  border-bottom: double;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.done {
+  text-decoration: line-through red;
+}
