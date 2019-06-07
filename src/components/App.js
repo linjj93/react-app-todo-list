@@ -12,23 +12,45 @@ class App extends React.Component {
         { id: "2", desc: "eat dinner" },
         { id: "3", desc: "nail javascript" },
         { id: "4", desc: "give feedback" }
-      ]
+      ],
+      value: ""
     };
   }
 
-  addTask() {
-    const inputBox = document.querySelector("input");
-    const taskToAdd = inputBox.value;
-    if (taskToAdd.trim() !== "") {
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    });
+  }
+
+  // addTask() {
+  //   const inputBox = document.querySelector("input");
+  //   const taskToAdd = inputBox.value;
+  //   if (taskToAdd.trim() !== "") {
+  //     const nextId = (
+  //       parseInt(this.state.tasks[this.state.tasks.length - 1]["id"]) + 1
+  //     ).toString();
+  //     const newTask = { id: nextId, desc: taskToAdd };
+
+  //     this.setState(state => ({
+  //       tasks: [...state.tasks, newTask]
+  //     }));
+  //     inputBox.value = null;
+  //   } else {
+  //     alert("Missing Information!");
+  //   }
+  // }
+
+  addTask(event) {
+    if (this.state.value.trim() !== "") {
       const nextId = (
         parseInt(this.state.tasks[this.state.tasks.length - 1]["id"]) + 1
       ).toString();
-      const newTask = { id: nextId, desc: taskToAdd };
-
+      const newTask = { id: nextId, desc: this.state.value };
       this.setState(state => ({
-        tasks: [...state.tasks, newTask]
+        tasks: [...state.tasks, newTask],
+        value: ""
       }));
-      inputBox.value = null;
     } else {
       alert("Missing Information!");
     }
@@ -50,8 +72,10 @@ class App extends React.Component {
       <React.Fragment>
         <ul>{taskList}</ul>
         <Input
+          onChange={this.handleChange.bind(this)}
           onClick={this.addTask.bind(this)}
           onKeyDown={this.keyDown.bind(this)}
+          value={this.state.value}
         />
       </React.Fragment>
     );
